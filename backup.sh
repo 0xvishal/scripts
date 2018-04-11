@@ -1,5 +1,5 @@
 #!/bin/bash
-# Full backup script with database, run this script once in a day 
+# Full backup of a server  with database, run this script once in a day 
 # Copyright (c) 2015-2018 Vishal Gupta
 # Automatically generated backups by Vishal Gupta
 # EMAILID="er.vishalkumargupta@gmail.com"
