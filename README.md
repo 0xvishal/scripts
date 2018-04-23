@@ -1,2 +1,3 @@
-# The file backup.sh is used to take full backup of a Server with database
+# backup.sh: This file is used to take backup of a server with database
+
 
