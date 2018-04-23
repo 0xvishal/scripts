@@ -1,4 +1,12 @@
-!#/bin/bash
+#!/bin/bash
+
+#!/bin/bash
+# Install composer on ubuntu16.04 
+# Copyright (c) 2015-2018 Vishal Gupta
+# EMAILID="er.vishalkumargupta@gmail.com"
+# ---------------------------------------------------------------------
+
+
 sudo apt-get update
 if [ $? -eq 0 ]; then
     echo "pachages installed"

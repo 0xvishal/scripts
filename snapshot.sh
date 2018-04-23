@@ -1,4 +1,9 @@
 #!/bin/bash
+# This script is used to take snapshot of all Instances in default region using aws-cli
+# Copyright (c) 2015-2018 Vishal Gupta
+# EMAILID="er.vishalkumargupta@gmail.com"
+# ---------------------------------------------------------------------
+
 aws ec2 describe-tags --query "Tags[*].{Name:Value,ResourceId:ResourceId}" --filters "Name=key,Values=Name"  --filters "Name=resource-type,Values=volume" --output text > /tmp/snapshot
 while read -r line; do
    value1=$(echo "$line"| awk -F" "  '{print $1}')

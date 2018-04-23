@@ -1,4 +1,12 @@
 #! /bin/bash
+
+# This script is used to see disk utilization of all Instances in default region using aws-cli
+# This script will be applied only Ubuntu Instances. And write the ubuntu in NAME tag of every instances belong to ubuntu OS for example: ubuntu, ubuntu-project_name or ubuntu-somthing 
+# I shared an image with name disk.png,to know how to set NAME tag
+# Copyright (c) 2015-2018 Vishal Gupta
+# EMAILID="er.vishalkumargupta@gmail.com"
+# ---------------------------------------------------------------------
+
 #aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text
 #aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags[?Key==`Name`].Value|[0],State.Name,PrivateIpAddress,PublicIpAddress]' --output text | column -t
 #ssh -t ubuntu@13.127.107.52 -i /home/ubuntu/vishal/Shashank.pem df -h
