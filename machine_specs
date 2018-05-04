@@ -21,7 +21,7 @@ echo "All Details for :"$NAME
 echo "Total Memory: "$t_mem"MB" 
 echo "Used Memory: "$u_mem"MB"
 
-# Check if used memory is get above 80% 
+# Check if used memory gets above 80% 
 per=`expr $u_mem \* 100 / $t_mem`
 if [[ $per -gt 80 ]]; then
 echo "Used % Memeory: "$per"%  WARNING"
