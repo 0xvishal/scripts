@@ -1,0 +1,35 @@
+#! /bin/bash
+# ssh key for all Instances
+key="/home/ubuntu/vishal/sshkey.pem"
+
+# find some details of all Instances
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Tags[?Key==`Name`].Value|[0],State.Name,PublicIpAddress]' --output text | column -t | grep running > details
+while read -r line; do
+   ID=$(echo "$line"| awk -F" "  '{print $1}')
+   NAME=$(echo "$line"| awk -F" "  '{print $2}')
+   IP=$(echo "$line"| awk -F" "  '{print $4}')
+#if [[ $NAME = *"ubuntu"* ]]; then
+#echo "Name:"$NAME   "IP:"$IP   "ID:"$ID    "platform:Ubuntu"
+
+# To find Total Memory
+t_mem=$(ssh -n ubuntu@$IP -i $key free -m | grep Mem | awk -v N=2 '{print $N}')
+
+# To find Used Memory
+u_mem=$(ssh -n ubuntu@$IP -i $key free -m | grep Mem | awk -v N=3 '{print $N}')
+
+echo "All Details for :"$NAME
+echo "Total Memory: "$t_mem"MB" 
+echo "Used Memory: "$u_mem"MB"
+
+per=`expr $u_mem \* 100 / $t_mem`
+if [[ $per -gt 30 ]]; then
+echo "Used % Memeory: "$per"%  WARNING"
+else
+echo "Used % Memeory: "$per"%"
+fi
+
+# Find all Detals for CPU
+ssh -n ubuntu@$IP -i $key lscpu | sed '$d'
+
+#fi
+done < details
