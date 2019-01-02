@@ -7,4 +7,5 @@
 # diskspace.sh: This file is used to find disk space using aws-cli of default region. 
 
 # snapshot.sh: This file is used to take snapshot of all Instances using aws-cli of default region.
+# disk.sh: This file is used to find the free space of server drive
 
